@@ -9,6 +9,8 @@ A simple fetch utility, written in Rust
 
 ## Install
 
+[![Rust](https://github.com/flyingcakes85/crabfetch/actions/workflows/rust.yml/badge.svg)](https://github.com/flyingcakes85/crabfetch/actions/workflows/rust.yml)
+
 1. Get the repo
 
 ```sh
