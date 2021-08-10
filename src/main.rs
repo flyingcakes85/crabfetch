@@ -62,6 +62,7 @@ fn main() {
         Red.bold().paint("Usage"),
         usage / sys.processors().len()
     );
+    cursor_row = cursor_row + 1;
 
     for component in sys.components() {
         if component.label().contains("Package id") {
