@@ -1,5 +1,5 @@
 [package]
-name = "rfetch"
+name = "crabfetch"
 version = "0.1.0"
 edition = "2018"
 

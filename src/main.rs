@@ -1,37 +1,55 @@
 use ansi_term::Color::Red;
 use sysinfo::{ComponentExt, ProcessorExt, System, SystemExt};
-use termion::{color, style};
 use termion::{cursor::DetectCursorPos, raw::IntoRawMode};
 fn main() {
-    let left_pad = 30;
+    println!(" ");
+    let left_pad = 25;
     let mut stdout = std::io::stdout().into_raw_mode().unwrap();
-    // println!("{}\r", stdout.cursor_pos().unwrap().1);
-
     let mut sys = System::new_all();
     sys.refresh_all();
 
-    println!("{} : {}\r", Red.bold().paint("OS"), sys.name().unwrap());
+    println!("{}",Red.paint("     /\\\r\n    ( /   @ @    ()\r\n     \\  __| |__  /\r\n      -/   \"   \\-\r\n     /-|       |-\\\r\n    / /-\\     /-\\ \\\r\n     / /-`---\'-\\ \\\r\n      /         \\\r\n") );
+
+    let mut cursor_row = stdout.cursor_pos().unwrap().1;
+    cursor_row = cursor_row - 9;
     println!(
-        "{} : {}\r",
+        "{}{} : {}\r",
+        termion::cursor::Goto(left_pad, cursor_row),
+        Red.bold().paint("OS"),
+        sys.name().unwrap()
+    );
+    cursor_row = cursor_row + 1;
+    println!(
+        "{}{} : {}\r",
+        termion::cursor::Goto(left_pad, cursor_row),
         Red.bold().paint("Kernel"),
         sys.kernel_version().unwrap()
     );
+    cursor_row = cursor_row + 1;
+
     println!(
-        "{} : {}\r",
+        "{}{} : {}\r",
+        termion::cursor::Goto(left_pad, cursor_row),
         Red.bold().paint("Host"),
         sys.host_name().unwrap()
     );
+    cursor_row = cursor_row + 1;
 
     println!(
-        "{} : {}\r",
+        "{}{} : {}\r",
+        termion::cursor::Goto(left_pad, cursor_row),
         Red.bold().paint("CPU"),
         sys.processors()[0].brand()
     );
+    cursor_row = cursor_row + 1;
+
     println!(
-        "{} : {}\r",
+        "{}{} : {}\r",
+        termion::cursor::Goto(left_pad, cursor_row),
         Red.bold().paint("Cores"),
         sys.processors().len()
     );
+    cursor_row = cursor_row + 1;
 
     let mut usage = 0;
 
@@ -39,7 +57,8 @@ fn main() {
         usage = usage + processor.cpu_usage() as usize;
     }
     println!(
-        "{} : {}%\r",
+        "{}{} : {}%\r",
+        termion::cursor::Goto(left_pad, cursor_row),
         Red.bold().paint("Usage"),
         usage / sys.processors().len()
     );
@@ -47,21 +66,28 @@ fn main() {
     for component in sys.components() {
         if component.label().contains("Package id") {
             println!(
-                "{} : {}C\r",
+                "{}{} : {}C\r",
+                termion::cursor::Goto(left_pad, cursor_row),
                 Red.bold().paint("Temp"),
                 component.temperature()
             );
+            cursor_row = cursor_row + 1;
+            break;
         }
     }
 
     println!(
-        "{} : {}MB/{}MB\r",
+        "{}{} : {}MB/{}MB\r",
+        termion::cursor::Goto(left_pad, cursor_row),
         Red.bold().paint("Mem"),
         sys.used_memory() / 1024,
         sys.total_memory() / 1024
     );
+    cursor_row = cursor_row + 1;
+
     println!(
-        "{} : {}MB/{}MB\r",
+        "{}{} : {}MB/{}MB\r",
+        termion::cursor::Goto(left_pad, cursor_row),
         Red.bold().paint("Swap"),
         sys.used_swap() / 1024,
         sys.total_swap() / 1024

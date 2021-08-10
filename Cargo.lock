@@ -36,6 +36,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ea221b5284a47e40033bf9b66f35f984ec0ea2931eb03505246cd27a963f981b"
 
 [[package]]
+name = "crabfetch"
+version = "0.1.0"
+dependencies = [
+ "ansi_term",
+ "sysinfo",
+ "termion",
+]
+
+[[package]]
 name = "crossbeam-channel"
 version = "0.5.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -187,15 +196,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8440d8acb4fd3d277125b4bd01a6f38aee8d814b3b5fc09b3f2b825d37d3fe8f"
 dependencies = [
  "redox_syscall",
-]
-
-[[package]]
-name = "rfetch"
-version = "0.1.0"
-dependencies = [
- "ansi_term",
- "sysinfo",
- "termion",
 ]
 
 [[package]]
