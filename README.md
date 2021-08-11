@@ -1,4 +1,4 @@
-# crabfetch
+# crabfetch 🦀
 
 A simple fetch utility, written in Rust
 
@@ -12,6 +12,12 @@ A simple fetch utility, written in Rust
 
 ## Install
 
+### AUR (Arch and Arch Based)
+
+Install [`crabfetch`](https://aur.archlinux.org/packages/crabfetch) from AUR.
+
+### Manual
+
 [![Rust](https://github.com/flyingcakes85/crabfetch/actions/workflows/rust.yml/badge.svg)](https://github.com/flyingcakes85/crabfetch/actions/workflows/rust.yml)
 
 1. Get the repo
@@ -24,7 +30,14 @@ cd crabfetch
 2. Build it!
 
 ```sh
-cargo build
+cargo build --release
+```
+
+3. Copy the binary
+
+- For current user (root not required)
+```sh
+cp target/release/crabfetch ~/.local/bin/crabfetch
 ```
 
 ## License
