@@ -33,11 +33,16 @@ cd crabfetch
 cargo build --release
 ```
 
-3. Copy the binary
+3. Install the binary
 
 - For current user (root not required)
 ```sh
-cp target/release/crabfetch ~/.local/bin/crabfetch
+cargo install --path .
+```
+
+- For all users on Linux (root required)
+```sh
+sudo cargo install --path . --root /
 ```
 
 ## License
