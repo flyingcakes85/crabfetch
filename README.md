@@ -10,6 +10,22 @@ A simple fetch utility, written in Rust
 
 ![Screenschot](screenshot.png)
 
+## This app is
+- written in rust
+- blazing fast
+- written in rust
+- post modern (because, why not)
+- written in rust
+- correct (must be, cuz its Rust)
+- written in rust
+- better than whatever go can make
+- written in rust
+- most memory safe app ever
+- next gen (ofc)
+- written in rust
+- open source (bruh!)
+- written in rust
+
 ## Install
 
 ### AUR (Arch and Arch Based)
