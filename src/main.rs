@@ -1,6 +1,11 @@
 use ansi_term::Color::Red;
 use sysinfo::{ComponentExt, ProcessorExt, System, SystemExt};
 use termion::{cursor::DetectCursorPos, raw::IntoRawMode};
+
+fn print_crab() {
+    println!("{}",Red.paint("     /\\\r\n    ( /   @ @    ()\r\n     \\  __| |__  /\r\n      -/   \"   \\-\r\n     /-|       |-\\\r\n    / /-\\     /-\\ \\\r\n     / /-`---\'-\\ \\\r\n      /         \\\r\n") );
+}
+
 fn main() {
     println!(" ");
     let left_pad = 25;
@@ -8,7 +13,7 @@ fn main() {
     let mut sys = System::new_all();
     sys.refresh_all();
 
-    println!("{}",Red.paint("     /\\\r\n    ( /   @ @    ()\r\n     \\  __| |__  /\r\n      -/   \"   \\-\r\n     /-|       |-\\\r\n    / /-\\     /-\\ \\\r\n     / /-`---\'-\\ \\\r\n      /         \\\r\n") );
+    print_crab();
 
     let mut cursor_row = stdout.cursor_pos().unwrap().1;
     cursor_row = cursor_row - 9;
